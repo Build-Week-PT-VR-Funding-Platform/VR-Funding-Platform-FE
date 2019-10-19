@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ProjectCard from './ProjectCard.js';
 
 const Project = props => {
   const[project, setProject] = useState();
@@ -20,12 +21,12 @@ const Project = props => {
   }
 
   return (
-    <div>
-      <h1>{project.projectName}</h1>
-      <p>Description: {project.description}</p>
-      <p>Funding Needed: ${project.fundingAmount}</p>
-      <p>Industry: {project.projectType}</p>
-    </div>
+    <ProjectCard
+    description={project.description}
+    amount={project.fundingAmount}
+    name={project.projectName}
+    type={project.projectType}
+    />
   )
 }
 
