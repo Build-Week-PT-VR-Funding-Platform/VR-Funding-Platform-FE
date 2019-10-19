@@ -30,7 +30,7 @@ const ProjectList = props => {
       type={project.projectType}
       key={index}
       />
-      <Link to={`/projects/${index+1}`} className="project-link"><Button color="primary">View Project</Button>{' '}</Link>
+      <Link to={`/projects/${index+1}`} className="project-link"><Button color="primary">View Project</Button></Link>
       </div>
     })
   )

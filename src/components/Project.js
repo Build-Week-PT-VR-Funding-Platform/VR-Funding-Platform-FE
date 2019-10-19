@@ -30,7 +30,7 @@ const Project = props => {
       name={project.projectName}
       type={project.projectType}
       />
-      <Link to="/projects" className="project-link"><Button color="primary">Back to Projects</Button>{' '}</Link>
+      <Link to="/projects" className="project-link"><Button color="primary">Back to Projects</Button></Link>
     </div>
   )
 }
