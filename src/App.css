@@ -20,3 +20,15 @@
 .App-link {
   color: #09d3ac;
 }
+
+.card {
+  width: 60%;
+  margin: 20px auto;
+}
+.project-link, .project-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.project {
+  padding-bottom: 40px;
+}

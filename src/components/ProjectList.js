@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProjectCard from './ProjectCard.js';
+import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 const ProjectList = props => {
   const [projectList, setProjectList] = useState();
@@ -20,13 +22,16 @@ const ProjectList = props => {
 
   return (
     projectList.map((project, index) => {
-      return <ProjectCard
+      return <div className="project">
+      <ProjectCard
       description={project.description}
       amount={project.fundingAmount}
       name={project.projectName}
       type={project.projectType}
       key={index}
       />
+      <Link to={`/projects/${index+1}`} className="project-link"><Button color="primary">View Project</Button>{' '}</Link>
+      </div>
     })
   )
 }
