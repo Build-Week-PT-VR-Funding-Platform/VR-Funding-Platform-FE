@@ -44,7 +44,12 @@ function Signup(props) {
           error: 'Error occurred.  Please try a different username and make sure all fields are filled out.',
           success: ''
         });
-
+        setFormData({
+          username: '',
+          password: '',
+          name: '',
+          about: ''
+        });
       });
   }
 

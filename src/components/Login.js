@@ -39,6 +39,10 @@ function Login(props) {
         setReqError({
           error: 'Error occurred.  Please make sure to enter the correct username and password.'
         });
+        setFormData({
+          username: '',
+          password: ''
+        });
       });
   };
 
