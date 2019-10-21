@@ -1,10 +1,11 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 function Login() {
   return (
-    <div>
-      <Form>
+    <Container className="form-container">
+      <h1>Login</h1>
+      <Form className="login-form">
         <FormGroup>
           <Label for="username">Username:</Label>
           <Input type="text" name="username" placeholder="" />
@@ -15,7 +16,7 @@ function Login() {
         </FormGroup>
         <Button>Submit</Button>
       </Form>
-    </div>
+    </Container>
   );
 };
 

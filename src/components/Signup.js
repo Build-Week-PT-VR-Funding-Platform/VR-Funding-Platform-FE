@@ -1,10 +1,11 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 function Signup() {
   return (
-    <div>
-      <Form>
+    <Container className="form-container">
+      <h1>Signup</h1>
+      <Form className="signup-form">
         <FormGroup>
           <Label for="username">Username:</Label>
           <Input type="text" name="username" placeholder="" />
@@ -23,7 +24,7 @@ function Signup() {
         </FormGroup>
         <Button>Submit</Button>
       </Form>
-    </div>
+    </Container>
   );
 };
 
