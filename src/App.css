@@ -14,3 +14,13 @@
   margin-top: 25px;
   width: 50%;
 }
+
+.login-form button,
+.signup-form button {
+  display: block;
+  margin: 20px auto 0;
+}
+
+.alert {
+  margin-top: 50px;
+}

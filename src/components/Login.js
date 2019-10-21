@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 
 function Login() {
   return (
@@ -14,8 +15,11 @@ function Login() {
           <Label for="password">Password:</Label>
           <Input type="password" name="password" placeholder="" />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="primary">Login</Button>
       </Form>
+      <Alert color="info">
+         <Link to="/signup">Don't have an account? Signup instead</Link>
+      </Alert>
     </Container>
   );
 };
