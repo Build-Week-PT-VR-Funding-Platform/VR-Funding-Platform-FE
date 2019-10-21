@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import { Container, Form, FormGroup,  Label, Input, Button, Alert } from 'reactstrap';
 
 function Login(props) {
   const [ formData, setFormData ] = useState({
     username: '',
     password: ''
+  });
+
+  const [ reqError, setReqError ] = useState({
+    error: ''
   });
 
   const changeHandler = (e) => {
@@ -25,9 +29,17 @@ function Login(props) {
           username: '',
           password: ''
         });
+        setReqError({
+          error: ''
+        });
         props.history.push('/');
       })
-      .catch( err => console.log(err));
+      .catch( err => {
+        console.log(err)
+        setReqError({
+          error: 'Error occurred.  Please make sure to enter the correct username and password.'
+        });
+      });
   };
 
   return (
@@ -56,6 +68,10 @@ function Login(props) {
         </FormGroup>
         <Button color="primary">Login</Button>
       </Form>
+      { reqError.error && 
+        <Alert color="danger">
+          {reqError.error}
+        </Alert>}
       <Alert color="info">
          <Link to="/signup">Don't have an account? Signup instead</Link>
       </Alert>
