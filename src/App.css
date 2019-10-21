@@ -11,7 +11,7 @@
 
 .login-form,
 .signup-form {
-  margin-top: 25px;
+  margin: 25px 0;
   width: 50%;
 }
 
@@ -21,6 +21,4 @@
   margin: 20px auto 0;
 }
 
-.alert {
-  margin-top: 50px;
-}
+
