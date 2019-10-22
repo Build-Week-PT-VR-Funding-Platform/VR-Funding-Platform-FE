@@ -28,7 +28,7 @@ function App() {
           )}
         />
         <Route path="/signup" component={Signup} />
-        <PrivateRoute component={Account} />
+        <PrivateRoute path="/account" component={Account} />
       </div>
     </Router>
   );
