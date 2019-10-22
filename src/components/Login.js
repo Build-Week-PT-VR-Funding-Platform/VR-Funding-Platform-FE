@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Form, FormGroup,  Label, Input, Button, Alert, Spinner } from 'reactstrap';
 
-function Login(props) {
+function Login({ history, setUser }) {
   const [ formData, setFormData ] = useState({
     username: '',
     password: ''
@@ -28,7 +28,11 @@ function Login(props) {
     axios.post('https://vr-fund-platform.herokuapp.com/auth/login', formData)
       .then( res => {
         setIsLoading(false);
-        console.log(res);
+        setUser({
+          id: res.data.user.id,
+          name: res.data.user.name,
+          username: res.data.user.username
+        });
         localStorage.setItem('token', res.data.token); 
         setFormData({
           username: '',
@@ -37,7 +41,7 @@ function Login(props) {
         setReqError({
           error: ''
         });
-        props.history.push('/');
+        history.push('/');
       })
       .catch( err => {
         console.log(err)
