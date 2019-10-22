@@ -55,8 +55,8 @@ function Signup(props) {
 
   return (
     <Container className="form-container">
-      <h1>Signup</h1>
       <Form className="signup-form" onSubmit={submitHandler}>
+        <h2>Sign Up</h2>
         <FormGroup>
           <Label for="username">Username:</Label>
           <Input
