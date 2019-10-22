@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Project from './components/Project.js';
 import ProjectList from './components/ProjectList.js';
+import MainNav from './components/MainNav.js';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <MainNav />
         <Route
           path="/login"
           render={ props => (

@@ -46,3 +46,6 @@
 .project {
   padding-bottom: 40px;
 }
+.navbar-expand-md .navbar-nav {
+  align-items: baseline;
+}

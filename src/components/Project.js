@@ -23,7 +23,7 @@ const Project = props => {
   }
 
   return (
-    <div>
+    <div className="project text-center">
       <ProjectCard
       description={project.description}
       amount={project.fundingAmount}

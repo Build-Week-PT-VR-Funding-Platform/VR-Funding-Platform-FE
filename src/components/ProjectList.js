@@ -9,7 +9,7 @@ const ProjectList = props => {
 
   useEffect(() => {
     axios.get('https://vr-fund-platform.herokuapp.com/projects').then(res => {
-      console.log(res);
+      //console.log(res);
       setProjectList(res.data);
     }).catch(err => {
       console.log(err);
@@ -22,13 +22,12 @@ const ProjectList = props => {
 
   return (
     projectList.map((project, index) => {
-      return <div className="project">
+      return <div className="project text-center" key={index}>
       <ProjectCard
       description={project.description}
       amount={project.fundingAmount}
       name={project.projectName}
       type={project.projectType}
-      key={index}
       />
       <Link to={`/projects/${index+1}`} className="project-link"><Button color="primary">View Project</Button></Link>
       </div>
