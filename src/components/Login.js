@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Container, Form, FormGroup,  Label, Input, Button, Alert } from 'reactstrap';
+import { Container, Form, FormGroup,  Label, Input, Button, Alert, Spinner } from 'reactstrap';
 
 function Login(props) {
   const [ formData, setFormData ] = useState({
@@ -13,6 +13,8 @@ function Login(props) {
     error: ''
   });
 
+  const [ isLoading, setIsLoading ] = useState(false);
+
   const changeHandler = (e) => {
     setFormData({
       ...formData,
@@ -22,8 +24,10 @@ function Login(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios.post('https://vr-fund-platform.herokuapp.com/auth/login', formData)
       .then( res => {
+        setIsLoading(false);
         console.log(res);
         localStorage.setItem('token', res.data.token); 
         setFormData({
@@ -37,6 +41,7 @@ function Login(props) {
       })
       .catch( err => {
         console.log(err)
+        setIsLoading(false);
         setReqError({
           error: 'Error occurred.  Please make sure to enter the correct username and password.'
         });
@@ -71,7 +76,11 @@ function Login(props) {
             onChange={changeHandler}
           />
         </FormGroup>
-        <Button color="primary">Login</Button>
+        <Button 
+          color="primary"
+          disabled={isLoading ? true : false}
+        >Login</Button>
+        { isLoading && <Spinner color="primary"/> }
       </Form>
       { reqError.error && 
         <Alert color="danger">
