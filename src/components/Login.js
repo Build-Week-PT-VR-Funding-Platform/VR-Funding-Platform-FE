@@ -24,6 +24,7 @@ function Login(props) {
     e.preventDefault();
     axios.post('https://vr-fund-platform.herokuapp.com/auth/login', formData)
       .then( res => {
+        console.log(res);
         localStorage.setItem('token', res.data.token); 
         setFormData({
           username: '',
