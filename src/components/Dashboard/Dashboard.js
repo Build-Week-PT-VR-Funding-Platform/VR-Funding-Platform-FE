@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Container } from 'reactstrap';
-import { team, projects } from '../../dummyData';
 
 import Team from './Team';
 import ProjectCard from './ProjectCard';
 import AddProjectForm from './AddProjectForm';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 /*
     1. Check local storage for token and If user is logged in display dashboard
@@ -16,13 +15,16 @@ import AddProjectForm from './AddProjectForm';
   */
 
 const Dashboard = props => {
-  // const { id } = props.match.params;
+  const { user } = props.user;
+  const [projects, setProjects] = useState([]);
+
+  console.log(props.match);
 
   useEffect(() => {
-    axios
-      .get(`https://vr-fund-platform.herokuapp.com/users/${1}/projects`)
+    axiosWithAuth()
+      .get(`/users/${user.id}/projects`)
       .then(res => {
-        console.log(res);
+        setProjects(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -31,10 +33,10 @@ const Dashboard = props => {
 
   return (
     <Container>
-      <Team team={team} />
+      <Team user={user} />
       <AddProjectForm />
       {projects.map(project => (
-        <ProjectCard project={project} />
+        <ProjectCard key={project.id} project={project} />
       ))}
     </Container>
   );

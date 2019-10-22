@@ -2,7 +2,7 @@ import React from 'react';
 import { Jumbotron } from 'reactstrap';
 
 const Team = props => {
-  const { name, about } = props.team;
+  const { name, about } = props.user;
 
   return (
     <Jumbotron>

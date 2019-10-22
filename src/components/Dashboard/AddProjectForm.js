@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import {
   Form,
   FormGroup,
@@ -12,50 +12,32 @@ import {
 
 const AddProjectForm = props => {
   const [collapse, setCollapse] = useState(false);
-  const [projectName, setProjectName] = useState('');
-  const [projectType, setProjectType] = useState('');
-  const [description, setDescription] = useState('');
-  const [fundingAmount, setFundingAmount] = useState('');
-
-  const project = {
-    projectName: projectName,
-    projectType: projectType,
-    description: description,
-    fundingAmount: fundingAmount
-  };
+  const [formData, setFormData] = useState({
+    projectName: '',
+    projectType: '',
+    description: '',
+    fundingAmount: ''
+  });
 
   const toggle = () => setCollapse(!collapse);
 
+  const changeHandler = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const submitForm = event => {
     event.preventDefault();
-    axios
-      .post('https://vr-fund-platform.herokuapp.com/projects', project)
+    axiosWithAuth()
+      .post('/projects', formData)
       .then(res => {
         console.log(res);
       })
       .catch(err => {
         console.log(err);
       });
-  };
-
-  const handleProjectName = event => {
-    event.preventDefault();
-    setProjectName(event.target.value);
-  };
-
-  const handleProjectType = event => {
-    event.preventDefault();
-    setProjectType(event.target.value);
-  };
-
-  const handleDescription = event => {
-    event.preventDefault();
-    setDescription(event.target.value);
-  };
-
-  const handleFundingAmount = event => {
-    event.preventDefault();
-    setFundingAmount(event.target.value);
   };
 
   return (
@@ -72,8 +54,9 @@ const AddProjectForm = props => {
             <Col sm={10}>
               <Input
                 type="text"
-                onChange={handleProjectName}
-                value={projectName}
+                name="projectName"
+                onChange={changeHandler}
+                value={formData.projectName}
               />
             </Col>
           </FormGroup>
@@ -85,8 +68,9 @@ const AddProjectForm = props => {
             <Col sm={10}>
               <Input
                 type="text"
-                onChange={handleProjectType}
-                value={projectType}
+                name="projectType"
+                onChange={changeHandler}
+                value={formData.projectType}
               />
             </Col>
           </FormGroup>
@@ -98,9 +82,10 @@ const AddProjectForm = props => {
             <Col sm={2}>
               <Input
                 type="text"
+                name="fundingAmount"
                 placeholder="$0.00"
-                onChange={handleFundingAmount}
-                value={fundingAmount}
+                onChange={changeHandler}
+                value={formData.fundingAmount}
               />
             </Col>
           </FormGroup>
@@ -112,14 +97,17 @@ const AddProjectForm = props => {
             <Col sm={10}>
               <Input
                 type="textarea"
-                onChange={handleDescription}
-                value={description}
+                name="description"
+                onChange={changeHandler}
+                value={formData.description}
               />
             </Col>
           </FormGroup>
 
           <FormGroup>
-            <Button color="primary">Submit</Button>
+            <Button color="primary" onClick={submitForm}>
+              Submit
+            </Button>
           </FormGroup>
         </Form>
       </Collapse>
