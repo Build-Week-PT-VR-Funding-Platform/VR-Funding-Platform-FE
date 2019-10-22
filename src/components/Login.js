@@ -44,7 +44,7 @@ function Login({ history }) {
         setReqError({
           error: ''
         });
-        history.push('/');
+        history.push('/dashboard');
       })
       .catch( err => {
         console.log(err)

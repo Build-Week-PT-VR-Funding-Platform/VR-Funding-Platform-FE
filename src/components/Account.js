@@ -4,6 +4,7 @@ import { UserContext } from '../contexts/UserContext.js';
 function Account(props) {
 
   const [ user, setUser ] = useContext(UserContext);
+  console.log(user);
 
   return (
     <div>
