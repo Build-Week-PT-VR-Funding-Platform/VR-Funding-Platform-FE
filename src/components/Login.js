@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Form, FormGroup,  Label, Input, Button, Alert, Spinner } from 'reactstrap';
+import { UserContext } from '../contexts/UserContext';
 
-function Login({ history, setUser }) {
+function Login({ history }) {
   const [ formData, setFormData ] = useState({
     username: '',
     password: ''
@@ -14,6 +15,8 @@ function Login({ history, setUser }) {
   });
 
   const [ isLoading, setIsLoading ] = useState(false);
+
+  const [ user, setUser ] = useContext(UserContext);
 
   const changeHandler = (e) => {
     setFormData({
