@@ -11,8 +11,8 @@ const ProjectList = props => {
   useEffect(() => {
     axios.get('https://vr-fund-platform.herokuapp.com/projects').then(res => {
       //console.log(res);
+      const newState = res.data;
       if (globalState.projectList === undefined || globalState.projectList.length === 0) {
-        const newState = res.data;
         setGlobalState({projectList: newState});
       }
     }).catch(err => {
