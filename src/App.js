@@ -40,7 +40,9 @@ function App() {
         <Route path="/projects/:id" render={props => {
           return <Project {...props} />;
         }} />
-        <Route path="/create-project" component={CreateProjectForm} />
+        <Route path="/create-project" render={props => {
+          return <CreateProjectForm {...props} />;
+        }} />
         <PrivateRoute path="/account" component={Account} />
       </div>
     </Router>

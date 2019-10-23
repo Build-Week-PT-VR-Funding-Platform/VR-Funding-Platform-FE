@@ -1,27 +1,40 @@
 import React, { useState } from 'react';
 import { Container, Form, FormGroup,  Label, Input, Button } from 'reactstrap';
+import useCustom from './CustomHook.js';
 
-const CreateProjectForm = () => {
+const CreateProjectForm = props => {
 
-  const [projectObject, setProjectObject] = useState([{
-    title: '',
-    description: '',
-    funding: '',
-    industry: ''
-  }]);
+  const [globalState, setGlobalState] = useCustom();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(projectObject);
-    let {project} = projectObject;
+
+    let validInputs = 0;
+    let newProject = {};
     let inputs = document.querySelectorAll(".form-control");
+
     console.log(inputs);
     inputs.forEach(input => {
-      let name = input.name;
-      let value = input.value;
+
       if (input.classList.contains('is-valid')) {
-        setProjectObject(...projectObject, {name: value})
-        console.log(projectObject);
+
+        validInputs += 1;
+        newProject.id = validInputs + 100;
+        newProject[input.name] = input.value
+        console.log(validInputs);
+        console.log(newProject);
+
+      } else {
+
+        input.classList.add('is-invalid');
+
+      }
+
+      if(validInputs === 4) {
+
+        setGlobalState({projectList: [...globalState.projectList, newProject]});
+        props.history.push('/projects')
+
       }
     })
 
@@ -29,10 +42,16 @@ const CreateProjectForm = () => {
   };
 
   const handleChange = (e) => {
+
     if (e.target.value !== '') {
+
+      e.target.classList.remove('is-invalid');
       e.target.classList.add('is-valid');
+
     } else {
+
       e.target.classList.add('is-invalid');
+
     }
   }
 
@@ -41,10 +60,19 @@ const CreateProjectForm = () => {
       <Form className="create-project-form" onSubmit={submitHandler}>
         <h2>Create a New Project</h2>
         <FormGroup>
-          <Label for="title">Project Name:</Label>
+          <Label for="projectName">Project Name:</Label>
           <Input
             type="text"
-            name="title"
+            name="projectName"
+            placeholder=""
+            onChange={handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="projectType">Industry:</Label>
+          <Input
+            type="text"
+            name="projectType"
             placeholder=""
             onChange={handleChange}
           />
@@ -59,19 +87,10 @@ const CreateProjectForm = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="funding">Funding Needed:</Label>
+          <Label for="fundingAmount">Funding Needed:</Label>
           <Input
             type="text"
-            name="funding"
-            placeholder=""
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="industry">Industry:</Label>
-          <Input
-            type="text"
-            name="industry"
+            name="fundingAmount"
             placeholder=""
             onChange={handleChange}
           />
