@@ -61,7 +61,7 @@ function Login({ history }) {
 
   return (
     <Container className="form-container">
-      <Form className="login-form" onSubmit={submitHandler}>
+      <Form className="form" onSubmit={submitHandler}>
         <h2>Login</h2>
         <FormGroup>
           <Label for="username">Username:</Label>
