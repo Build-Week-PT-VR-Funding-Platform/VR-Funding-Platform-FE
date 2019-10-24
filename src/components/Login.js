@@ -25,7 +25,8 @@ function Login({ history }) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [user, setUser] = useContext(UserContext);
+  const userArray = useContext(UserContext);
+  const setUser = userArray[1];
 
   const changeHandler = e => {
     setFormData({
