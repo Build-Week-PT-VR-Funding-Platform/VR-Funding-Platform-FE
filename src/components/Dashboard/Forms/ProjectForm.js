@@ -11,8 +11,9 @@ import {
   Button,
   Collapse
 } from 'reactstrap';
+import ProjectList from '../../ProjectList';
 
-const ProjectForm = () => {
+const ProjectForm = props => {
   const [user] = useContext(UserContext);
   const [collapse, setCollapse] = useState(false);
   const [formData, setFormData] = useState({
@@ -34,9 +35,12 @@ const ProjectForm = () => {
 
   const submitForm = event => {
     event.preventDefault();
+    console.log('Submitting form');
     axiosWithAuth()
-      .post('/projects', formData)
+      .post('projects', formData)
       .then(res => {
+        console.log(res.data);
+        props.setProjects([...props.projects, res.data]);
         setFormData({
           projectName: '',
           projectType: '',

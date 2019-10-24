@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard/Dashboard';
 import Project from './components/Project.js';
-import Home from './components/Home.js'
+import Home from './components/Home.js';
 import ProjectList from './components/ProjectList.js';
 import MainNav from './components/MainNav.js';
 import Account from './components/Account';
@@ -34,12 +34,18 @@ function App() {
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route exact path="/projects" component={ProjectList} />
           <Route exact path="/home" component={Home} />
-          <Route path="/projects/:id" render={props => {
-            return <Project {...props} />;
-          }} />
-          <Route path="/create-project" render={props => {
-            return <CreateProjectForm {...props} />;
-          }} />
+          <Route
+            path="/projects/:id"
+            render={props => {
+              return <Project {...props} />;
+            }}
+          />
+          <Route
+            path="/create-project"
+            render={props => {
+              return <CreateProjectForm {...props} />;
+            }}
+          />
           <PrivateRoute path="/account" component={Account} />
         </div>
       </Router>

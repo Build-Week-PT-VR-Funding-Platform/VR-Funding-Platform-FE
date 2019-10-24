@@ -22,12 +22,29 @@ const ProjectCard = props => {
     id
   } = props.project;
 
+  const getProjects = () => {
+    axiosWithAuth()
+      .get(`/users/${props.user.id}/projects`)
+      .then(res => {
+        console.log(res);
+        if (res.status === 200) {
+          props.setProjects(res.data);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   const deleteProject = event => {
     event.preventDefault();
     axiosWithAuth()
-      .delete(`/projects/${id}`)
+      .delete(`projects/${id}`)
       .then(res => {
         console.log(res.data);
+        if (res.status === 200) {
+          getProjects();
+        }
       })
       .catch(err => {
         console.log(err);

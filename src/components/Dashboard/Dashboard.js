@@ -31,9 +31,14 @@ const Dashboard = () => {
   return (
     <Container>
       <User user={user} />
-      <ProjectForm />
+      <ProjectForm setProjects={setProjects} projects={projects} />
       {projects.map(project => (
-        <ProjectCard key={project.id} project={project} />
+        <ProjectCard
+          key={project.id}
+          project={project}
+          setProjects={setProjects}
+          user={user}
+        />
       ))}
     </Container>
   );
