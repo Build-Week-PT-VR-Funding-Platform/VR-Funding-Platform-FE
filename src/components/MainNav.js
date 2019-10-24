@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, Button } from 'reactstrap';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MainNav = () => {
 
