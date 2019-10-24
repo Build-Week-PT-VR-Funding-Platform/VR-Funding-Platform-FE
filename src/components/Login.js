@@ -1,42 +1,52 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Container, Form, FormGroup,  Label, Input, Button, Alert, Spinner } from 'reactstrap';
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Alert,
+  Spinner
+} from 'reactstrap';
 import { UserContext } from '../contexts/UserContext';
 
 function Login({ history }) {
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
 
-  const [ reqError, setReqError ] = useState({
+  const [reqError, setReqError] = useState({
     error: ''
   });
 
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [ user, setUser ] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
-  const changeHandler = (e) => {
+  const changeHandler = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    })
+    });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     setIsLoading(true);
-    axios.post('https://vr-fund-platform.herokuapp.com/auth/login', formData)
-      .then( res => {
+    axios
+      .post('https://vr-fund-platform.herokuapp.com/auth/login', formData)
+      .then(res => {
         setIsLoading(false);
         setUser({
           id: res.data.user.id,
           name: res.data.user.name,
           username: res.data.user.username
         });
-        localStorage.setItem('token', res.data.token); 
+        localStorage.setItem('token', res.data.token);
         setFormData({
           username: '',
           password: ''
@@ -46,11 +56,12 @@ function Login({ history }) {
         });
         history.push('/dashboard');
       })
-      .catch( err => {
-        console.log(err)
+      .catch(err => {
+        console.log(err);
         setIsLoading(false);
         setReqError({
-          error: 'Error occurred.  Please make sure to enter the correct username and password.'
+          error:
+            'Error occurred.  Please make sure to enter the correct username and password.'
         });
         setFormData({
           username: '',
@@ -65,39 +76,35 @@ function Login({ history }) {
         <h2>Login</h2>
         <FormGroup>
           <Label for="username">Username:</Label>
-          <Input 
-            type="text" 
-            name="username" 
-            placeholder="" 
+          <Input
+            type="text"
+            name="username"
+            placeholder=""
             value={formData.username}
             onChange={changeHandler}
           />
         </FormGroup>
         <FormGroup>
           <Label for="password">Password:</Label>
-          <Input 
-            type="password" 
-            name="password" 
-            placeholder="" 
+          <Input
+            type="password"
+            name="password"
+            placeholder=""
             value={formData.password}
             onChange={changeHandler}
           />
         </FormGroup>
-        <Button 
-          color="primary"
-          disabled={isLoading ? true : false}
-        >Login</Button>
-        { isLoading && <Spinner color="primary"/> }
+        <Button color="primary" disabled={isLoading ? true : false}>
+          Login
+        </Button>
+        {isLoading && <Spinner color="primary" />}
       </Form>
-      { reqError.error && 
-        <Alert color="danger">
-          {reqError.error}
-        </Alert>}
+      {reqError.error && <Alert color="danger">{reqError.error}</Alert>}
       <Alert color="info">
-         <Link to="/signup">Don't have an account? Signup instead</Link>
+        <Link to="/signup">Don't have an account? Signup instead</Link>
       </Alert>
     </Container>
   );
-};
+}
 
 export default Login;
