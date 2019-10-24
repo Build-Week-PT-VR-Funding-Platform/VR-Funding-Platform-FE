@@ -5,7 +5,8 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 function Account(props) {
 
-  const [ user, setUser ] = useContext(UserContext);
+  const userArray = useContext(UserContext);
+  const user = userArray[0];
   const [ about, setAbout ] = useState('');
 
   useEffect(() => {
@@ -17,10 +18,12 @@ function Account(props) {
       .catch( err => console.log(err));
   }, [user.id]);
 
+
   const [ formData, setFormData ] = useState({
     username: user.username,
     password: '',
     name: user.name,
+    about: ''
   });
 
   const [ reqStatus, setReqStatus ] = useState({
