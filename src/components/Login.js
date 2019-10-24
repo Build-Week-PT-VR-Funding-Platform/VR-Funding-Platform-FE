@@ -45,7 +45,8 @@ function Login({ history }) {
         setUser({
           id: res.data.user.id,
           name: res.data.user.name,
-          username: res.data.user.username
+          username: res.data.user.username,
+          about: res.data.user.about
         });
         localStorage.setItem('token', res.data.token);
         setFormData({
