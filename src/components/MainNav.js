@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MainNav = () => {
 
@@ -10,21 +10,21 @@ const MainNav = () => {
 
   return (
     <Navbar color="light" light expand="md">
-        <Link to={`/`} className="navbar-brand">Dreality</Link>
+        <NavLink to={`/`} className="navbar-brand">Dreality</NavLink>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to={`/`} className="nav-link">Home</Link>
+              <NavLink to={`/`} className="nav-link">Home</NavLink>
             </NavItem>
             <NavItem>
-              <Link to={`/projects`} className="nav-link">Projects</Link>
+              <NavLink to={`/projects`} className="nav-link">Projects</NavLink>
             </NavItem>
             <NavItem>
-              <Link to={`/login`} className="nav-link"><Button color="secondary">Log In</Button></Link>
+              <NavLink to={`/login`} className="nav-link"><Button color="secondary">Log In</Button></NavLink>
             </NavItem>
             <NavItem>
-              <Link to={`/signup`} className="nav-link"><Button color="primary">Sign Up</Button></Link>
+              <NavLink to={`/signup`} className="nav-link"><Button color="primary">Sign Up</Button></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
