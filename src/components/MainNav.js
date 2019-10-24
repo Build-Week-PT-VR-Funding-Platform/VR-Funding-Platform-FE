@@ -10,25 +10,25 @@ const MainNav = () => {
 
   return (
     <Navbar color="light" light expand="md">
-        <NavLink to={`/`} className="navbar-brand">Dreality</NavLink>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink to={`/`} className="nav-link">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to={`/projects`} className="nav-link">Projects</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to={`/login`} className="nav-link"><Button color="secondary">Log In</Button></NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to={`/signup`} className="nav-link"><Button color="primary">Sign Up</Button></NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+      <NavLink to={`/`} className="navbar-brand">Dreality</NavLink>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink to={`/`} className="nav-link">Home</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to={`/projects`} className="nav-link">Projects</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to={`/login`} className="nav-link"><Button color="secondary">Log In</Button></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to={`/signup`} className="nav-link"><Button color="primary">Sign Up</Button></NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
   )
 }
 
