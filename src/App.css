@@ -32,6 +32,10 @@
   margin: 10px auto 0;
 }
 
+.project-card {
+  margin: 50px 0;
+}
+
 .btn-group {
   display: flex;
   justify-content: center;
