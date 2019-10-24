@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { Container, Form, FormGroup, FormText, Label, Input, Button, Alert, Spinner, ButtonGroup } from 'reactstrap';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -7,23 +7,11 @@ function Account(props) {
 
   const userArray = useContext(UserContext);
   const user = userArray[0];
-  const [ about, setAbout ] = useState('');
-
-  useEffect(() => {
-    axiosWithAuth().get(`/users/${user.id}`)
-      .then( res => {
-        console.log(res.data.about);
-        setAbout(res.data.about);
-      })
-      .catch( err => console.log(err));
-  }, [user.id]);
-
 
   const [ formData, setFormData ] = useState({
     username: user.username,
-    password: '',
     name: user.name,
-    about: ''
+    about: user.about
   });
 
   const [ reqStatus, setReqStatus ] = useState({
@@ -101,13 +89,13 @@ function Account(props) {
         <FormGroup>
           <Label for="password">Password:</Label>
           <Input 
+            disabled
             type="password" 
             name="password" 
             placeholder="" 
             value={formData.password}
             onChange={changeHandler}
           />
-          <FormText>* Required</FormText>
         </FormGroup>
         <FormGroup>
           <Label for="name">Name:</Label>
@@ -126,7 +114,7 @@ function Account(props) {
             type="textarea" 
             name="about" 
             placeholder="" 
-            value={about}
+            value={formData.about}
             onChange={changeHandler}
           />
           <FormText>* Required</FormText>
