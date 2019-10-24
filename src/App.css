@@ -40,3 +40,21 @@
   display: flex;
   justify-content: center;
 }
+
+.card {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.project-link, .project-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project {
+  padding-bottom: 40px;
+}
+
+.navbar-expand-md .navbar-nav {
+  align-items: baseline;
+}
