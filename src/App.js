@@ -19,7 +19,8 @@ function App() {
   const [user, setUser] = useState({
     id: null,
     name: '',
-    username: ''
+    username: '',
+    about: ''
   });
 
   return (
