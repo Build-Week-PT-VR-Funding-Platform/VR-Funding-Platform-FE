@@ -1,40 +1,44 @@
-# VR-Funding-Platform-FE
+# VR-Funding-Platform-FE - Dreality
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Website  – [Dreality App](https://dreality.netlify.com/)
+### Dreality provides tech entrepreneurs with limited resources access to business training, project capital raising, and mentoring
 
-## Available Scripts
+If you don't want to create an account, you can log in to demo the app with:
 
-In the project directory, you can run:
+Username: admin
 
-### `npm start`
+Password: password
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+- User can register an account
+- User can login
+- User can view specific entrepreneur’s projects
+- User can view all projects
+- Logged in User can view entrepreneurs
+- Logged In User can Create/Read/Update/Delete projects
+- Logged in User can Read/Update/Delete Account
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Getting Started
+- Install [yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com/) to handle all your dependencies
+- Clone the project down to your local machine and navigate to your local clone where your package.json file is located
+- Type *yarn* or *npm install* to begin bringing down all necessary packages to replicate the frontend locally
+- Upon successful completion of dependency introduction, you can type *yarn start* or *npm start* to spin up a local instance of the TSTUFF front end
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Product Canvas
+[Dreality Product Canvas](https://docs.google.com/document/d/1IZZQsNFwZ6SjSzwDffOBSKQZsCzmxDwEK8R-d25W_qg/edit?usp=sharing)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With:
+* [axios](https://www.npmjs.com/package/axios)
+* [react](https://www.npmjs.com/package/react)
+* [react-dom](https://www.npmjs.com/package/react-dom)
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+* [react-scripts](https://www.npmjs.com/package/react-scripts)
+* [reactstrap](https://www.npmjs.com/package/reactstrap)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Authors 
+- [Alfonso Ruiz](https://github.com/alfonsoruiz)
+- [Brennan Neilson](https://github.com/bvneilson)
+- [Jesse Bentley](https://github.com/jessebentley)
+- [Seong Kim](https://github.com/seongck)
