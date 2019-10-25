@@ -27,7 +27,6 @@ const ProjectList = props => {
 
   return (
     globalState.projectList.map((project, index) => {
-      console.log(globalState.projectList);
       return <div className="project text-center" key={index}>
       <ProjectCard
       description={project.description}
