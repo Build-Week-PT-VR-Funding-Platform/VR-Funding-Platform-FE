@@ -19,13 +19,15 @@ function App() {
   const [user, setUser] = useState({
     id: null,
     name: '',
-    username: ''
+    username: '',
+    about: ''
   });
 
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>
         <div className="App">
+          <MainNav />
           <Route
             path="/login"
             render={props => <Login {...props} setUser={setUser} />}
@@ -33,19 +35,13 @@ function App() {
           <Route path="/signup" component={Signup} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route exact path="/projects" component={ProjectList} />
-          <Route exact path="/home" component={Home} />
-          <Route
-            path="/projects/:id"
-            render={props => {
-              return <Project {...props} />;
-            }}
-          />
-          <Route
-            path="/create-project"
-            render={props => {
-              return <CreateProjectForm {...props} />;
-            }}
-          />
+          <Route exact path="/" component={Home} />
+          <Route path="/projects/:id" render={props => {
+            return <Project {...props} />;
+          }} />
+          <Route path="/create-project" render={props => {
+            return <CreateProjectForm {...props} />;
+          }} />
           <PrivateRoute path="/account" component={Account} />
         </div>
       </Router>

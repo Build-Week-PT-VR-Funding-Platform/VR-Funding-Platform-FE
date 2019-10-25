@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProjectList from './ProjectList.js';
 import CTA from './CTA.js';
-import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Spinner } from 'reactstrap';
 
 const Home = props => {
   const [projectList, setProjectList] = useState();
@@ -18,7 +17,10 @@ const Home = props => {
   }, [])
 
   if (!projectList) {
-    return <h3>Loading...</h3>;
+    return <div>
+     <h3>Loading...</h3>
+     <Spinner color="primary" />
+     </div>
   }
 
   return (<div className="project text-center">

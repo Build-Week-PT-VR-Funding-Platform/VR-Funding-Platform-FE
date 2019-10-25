@@ -7,9 +7,9 @@ const ProjectCard = props => {
     <Card>
       <CardHeader tag="h3">{props.name}</CardHeader>
       <CardBody>
-        <CardText>Description: {props.description}</CardText>
-        <CardText>Funding Needed: ${props.amount}</CardText>
-        <CardText>Industry: {props.type}</CardText>
+        <CardText><strong>Description:</strong> {props.description}</CardText>
+        <CardText><strong>Funding Needed:</strong> ${props.amount}</CardText>
+        <CardText><strong>Industry:</strong> {props.type}</CardText>
       </CardBody>
     </Card>
   )
