@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Card, CardHeader, CardBody, CardText } from 'reactstrap';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import EntrepreneurCard from './EntrepreneurCard.js';
 import { Link } from 'react-router-dom';
 import { Button, Spinner } from 'reactstrap';
 
 const Entrepreneur = props => {
-  const[user, setUser] = useState();
+  const[user, setUser] = useState({});
 
   useEffect(() => {
     const { id } = props.match.params;
 
     axiosWithAuth().get(`https://vr-fund-platform.herokuapp.com/users/${id}`).then(res => {
-      console.log(res);
       setUser(res.data);
     }).catch(err => {
       console.log(err);
@@ -27,11 +26,14 @@ const Entrepreneur = props => {
 
   return (
     <div className="project text-center">
-      <EntrepreneurCard
-      username={user.username}
-      id={user.id}
-      />
-      <Link to="/entrepreneurs" className="project-link"><Button color="primary">Back to Entrepreneurs</Button></Link>
+      <Card>
+        <CardHeader tag="h3">{user.name}</CardHeader>
+        <CardBody>
+          <CardText><strong>About:</strong> {user.about}</CardText>
+        </CardBody>
+    </Card>
+
+    <Link to="/entrepreneurs" className="project-link"><Button color="primary">Back to Entrepreneurs</Button></Link>
     </div>
   )
 }
