@@ -45,10 +45,8 @@ function App() {
             return <CreateProjectForm {...props} />;
           }} />
           <PrivateRoute path="/account" component={Account} />
-          <PrivateRoute path="/entrepreneurs" component={Entrepreneurs} />
-          <PrivateRoute path="/entrepreneurs/:id" render={props => {
-            return <Entrepreneur {...props} />;
-          }} />
+          <PrivateRoute exact path="/entrepreneurs" component={Entrepreneurs} />
+          <PrivateRoute path="/entrepreneurs/:id" component={Entrepreneur} />
         </div>
       </Router>
     </UserContext.Provider>
