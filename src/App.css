@@ -46,6 +46,10 @@
   margin: 20px auto;
 }
 
+.card-subheader {
+  font-size: 21px;
+}
+
 .project-link, .project-link:hover {
   text-decoration: none;
   color: inherit;
