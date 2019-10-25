@@ -26,6 +26,7 @@ function App() {
     <UserContext.Provider value={[user, setUser]}>
       <Router>
         <div className="App">
+          <MainNav />
           <Route
             path="/login"
             render={props => <Login {...props} setUser={setUser} />}
