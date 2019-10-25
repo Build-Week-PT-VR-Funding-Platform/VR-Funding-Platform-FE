@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProjectCard from './ProjectCard.js';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Button, Spinner } from 'reactstrap';
 
 const Project = props => {
   const[project, setProject] = useState();
@@ -19,7 +19,10 @@ const Project = props => {
   }, [props.match.params])
 
   if(!project) {
-    return <h3>Loading...</h3>;
+    return <div>
+     <h3>Loading...</h3>
+     <Spinner color="primary" />
+     </div>
   }
 
   return (
