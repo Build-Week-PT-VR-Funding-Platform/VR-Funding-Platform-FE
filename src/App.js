@@ -19,7 +19,8 @@ function App() {
   const [user, setUser] = useState({
     id: null,
     name: '',
-    username: ''
+    username: '',
+    about: ''
   });
 
   return (
@@ -34,7 +35,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route exact path="/projects" component={ProjectList} />
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route path="/projects/:id" render={props => {
             return <Project {...props} />;
           }} />
