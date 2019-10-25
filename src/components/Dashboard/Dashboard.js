@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`/users/${user.id}/projects`)
+      .get(`users/${user.id}/projects`)
       .then(res => {
         setProjects(res.data);
       })
@@ -31,9 +31,16 @@ const Dashboard = () => {
   return (
     <Container>
       <User user={user} />
-      <ProjectForm />
+      <ProjectForm setProjects={setProjects} projects={projects} />
+
       {projects.map(project => (
-        <ProjectCard key={project.id} project={project} />
+        <ProjectCard
+          key={project.id}
+          project={project}
+          setProjects={setProjects}
+          projects={projects}
+          user={user}
+        />
       ))}
     </Container>
   );

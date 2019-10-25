@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard/Dashboard';
 import Project from './components/Project.js';
-import Home from './components/Home.js'
+import Home from './components/Home.js';
 import ProjectList from './components/ProjectList.js';
 import MainNav from './components/MainNav.js';
 import Account from './components/Account';

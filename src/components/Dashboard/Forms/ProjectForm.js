@@ -12,7 +12,7 @@ import {
   Collapse
 } from 'reactstrap';
 
-const ProjectForm = () => {
+const ProjectForm = props => {
   const [user] = useContext(UserContext);
   const [collapse, setCollapse] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,18 +32,23 @@ const ProjectForm = () => {
     });
   };
 
+  const clearForm = () => {
+    setFormData({
+      projectName: '',
+      projectType: '',
+      description: '',
+      fundingAmount: '',
+      user_id: user.id
+    });
+  };
+
   const submitForm = event => {
     event.preventDefault();
     axiosWithAuth()
-      .post('/projects', formData)
+      .post('projects', formData)
       .then(res => {
-        setFormData({
-          projectName: '',
-          projectType: '',
-          description: '',
-          fundingAmount: '',
-          user_id: user.id
-        });
+        props.setProjects([...props.projects, res.data]);
+        clearForm();
         toggle();
       })
       .catch(err => {
@@ -118,7 +123,7 @@ const ProjectForm = () => {
 
           <FormGroup>
             <Button color="primary" onClick={submitForm}>
-              Submit
+              Enter
             </Button>
           </FormGroup>
         </Form>

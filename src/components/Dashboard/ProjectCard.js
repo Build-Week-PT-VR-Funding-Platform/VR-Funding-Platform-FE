@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import EditModal from './Forms/EditModal';
 
 import {
   Row,
@@ -22,12 +23,30 @@ const ProjectCard = props => {
     id
   } = props.project;
 
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  const getProjects = () => {
+    axiosWithAuth()
+      .get(`users/${props.user.id}/projects`)
+      .then(res => {
+        if (res.status === 200) {
+          props.setProjects(res.data);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   const deleteProject = event => {
     event.preventDefault();
     axiosWithAuth()
-      .delete(`/projects/${id}`)
+      .delete(`projects/${id}`)
       .then(res => {
-        console.log(res.data);
+        if (res.status === 200) {
+          getProjects();
+        }
       })
       .catch(err => {
         console.log(err);
@@ -46,7 +65,13 @@ const ProjectCard = props => {
                 <Badge color="success">${fundingAmount}</Badge>
               </h6>
               <CardText>{description}</CardText>
-              <Button color="info">Edit</Button>{' '}
+              <EditModal
+                user={props.user}
+                project={props.project}
+                projects={props.projects}
+                setProjects={props.setProjects}
+                getProjects={getProjects}
+              />
               <Button onClick={deleteProject} color="danger">
                 Delete
               </Button>
