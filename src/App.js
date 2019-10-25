@@ -11,6 +11,8 @@ import Home from './components/Home.js'
 import ProjectList from './components/ProjectList.js';
 import MainNav from './components/MainNav.js';
 import Account from './components/Account';
+import Entrepreneurs from './components/Entrepreneurs.js';
+import Entrepreneur from './components/Entrepreneur.js';
 
 import { UserContext } from './contexts/UserContext';
 import CreateProjectForm from './components/CreateProjectForm.js';
@@ -43,6 +45,10 @@ function App() {
             return <CreateProjectForm {...props} />;
           }} />
           <PrivateRoute path="/account" component={Account} />
+          <PrivateRoute path="/entrepreneurs" component={Entrepreneurs} />
+          <PrivateRoute path="/entrepreneurs/:id" render={props => {
+            return <Entrepreneur {...props} />;
+          }} />
         </div>
       </Router>
     </UserContext.Provider>
