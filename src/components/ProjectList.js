@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import ProjectCard from './ProjectCard.js';
 import { Link } from 'react-router-dom';
@@ -27,7 +27,6 @@ const ProjectList = props => {
 
   return (
     globalState.projectList.map((project, index) => {
-      console.log(globalState.projectList);
       return <div className="project text-center" key={index}>
       <ProjectCard
       description={project.description}
