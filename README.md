@@ -41,4 +41,4 @@ Password: password
 - [Alfonso Ruiz](https://github.com/alfonsoruiz)
 - [Brennan Neilson](https://github.com/bvneilson)
 - [Jesse Bentley](https://github.com/jessebentley)
-- [Seong Kim](https://github.com/seongck)
+- [Jack Kim](https://github.com/jackskim)
